@@ -1,0 +1,193 @@
+<div class="profile-editor">
+
+  <!-- Header -->
+  <header class="header">
+
+    <button class="back-button" (click)="goBack()">
+      <span>‹</span>
+    </button>
+
+    <h2>Edit profile picture</h2>
+
+    <button
+      class="done-button"
+      [disabled]="!selectedPhoto"
+      (click)="done()">
+
+      Done
+
+    </button>
+
+  </header>
+
+
+  <section class="editor-content">
+
+    <p class="description">
+      Choose a photo for your profile
+    </p>
+
+
+    <!-- Profile picture preview -->
+    <div class="preview-container">
+
+      <button
+        class="navigation-button"
+        [disabled]="photos.length < 2"
+        (click)="previousPhoto()">
+
+        ‹
+
+      </button>
+
+
+      <div class="profile-preview">
+
+        <img
+          *ngIf="selectedPhoto"
+          [src]="selectedPhoto.preview"
+          alt="Profile picture preview"
+        />
+
+        <div *ngIf="!selectedPhoto" class="empty-preview">
+          <span>+</span>
+        </div>
+
+      </div>
+
+
+      <button
+        class="navigation-button"
+        [disabled]="photos.length < 2"
+        (click)="nextPhoto()">
+
+        ›
+
+      </button>
+
+    </div>
+
+
+    <p class="photo-counter" *ngIf="selectedPhoto">
+      Photo {{ selectedIndex + 1 }} of {{ photos.length }}
+    </p>
+
+
+    <!-- Photo carousel -->
+    <div class="carousel-section">
+
+      <div class="section-header">
+
+        <h3>Your photos</h3>
+
+        <span class="photo-count">
+          {{ photos.length }}
+        </span>
+
+      </div>
+
+
+      <div class="photo-carousel">
+
+        <!-- Uploaded photos -->
+        <button
+          *ngFor="let photo of photos"
+          class="photo-item"
+          [class.selected]="photo.id === selectedPhotoId"
+          (click)="selectPhoto(photo)">
+
+          <img
+            [src]="photo.preview"
+            alt="Uploaded photo"
+          />
+
+          <span
+            class="selected-indicator"
+            *ngIf="photo.id === selectedPhotoId">
+
+            ✓
+
+          </span>
+
+        </button>
+
+
+        <!-- Add more photos -->
+        <label class="add-photo">
+
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            (change)="onFilesSelected($event)"
+          />
+
+          <span class="plus-icon">+</span>
+
+          <small>Add</small>
+
+        </label>
+
+      </div>
+
+
+      <!-- Empty state -->
+      <div *ngIf="photos.length === 0" class="empty-state">
+
+        <label class="upload-button">
+
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            (change)="onFilesSelected($event)"
+          />
+
+          <span>+</span>
+
+          Add photos
+
+          <small>
+            Select multiple pictures from your device
+          </small>
+
+        </label>
+
+      </div>
+
+    </div>
+
+
+    <!-- Photo actions -->
+    <div class="photo-actions" *ngIf="selectedPhoto">
+
+      <button
+        class="remove-button"
+        (click)="removePhoto()">
+
+        Remove photo
+
+      </button>
+
+      <label class="change-button">
+
+        Change photo
+
+        <input
+          type="file"
+          accept="image/*"
+          (change)="onFilesSelected($event)"
+        />
+
+      </label>
+
+    </div>
+
+
+    <p class="footer-text">
+      Your selected photo will be used as your profile picture.
+    </p>
+
+  </section>
+
+</div>

@@ -1,0 +1,302 @@
+:host {
+  display: block;
+  font-family: Arial, sans-serif;
+  color: #111b21;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.profile-editor {
+  width: 100%;
+  max-width: 560px;
+  min-height: 700px;
+  margin: auto;
+  background: #ffffff;
+  border: 1px solid #e8edef;
+}
+
+// Header
+
+.header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 16px;
+  border-bottom: 1px solid #edf0f2;
+
+  h2 {
+    flex: 1;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.back-button {
+  border: none;
+  background: transparent;
+  font-size: 32px;
+  cursor: pointer;
+  color: #54656f;
+}
+
+.done-button {
+  border: none;
+  background: transparent;
+  color: #008f75;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+}
+
+// Content
+
+.editor-content {
+  padding: 30px 25px;
+  text-align: center;
+}
+
+.description {
+  color: #667781;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+// Profile preview
+
+.preview-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.profile-preview {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e9edef;
+  border: 5px solid #f2f5f6;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.empty-preview {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: #aebac1;
+  font-size: 60px;
+}
+
+.navigation-button {
+  border: none;
+  background: transparent;
+  color: #54656f;
+  font-size: 36px;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.2;
+    cursor: default;
+  }
+}
+
+.photo-counter {
+  color: #667781;
+  font-size: 12px;
+  margin: 15px 0 30px;
+}
+
+// Carousel
+
+.carousel-section {
+  border-top: 1px solid #edf0f2;
+  padding-top: 20px;
+  text-align: left;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+
+  h3 {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+.photo-count {
+  background: #e7f5f1;
+  color: #008f75;
+  border-radius: 20px;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+.photo-carousel {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 3px 2px 12px;
+}
+
+.photo-item {
+  position: relative;
+  flex: 0 0 76px;
+  width: 76px;
+  height: 76px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &.selected {
+    border-color: #00a884;
+  }
+}
+
+.selected-indicator {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #00a884;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+}
+
+.add-photo {
+  flex: 0 0 76px;
+  height: 76px;
+  border: 1px dashed #aebac1;
+  border-radius: 12px;
+  background: #fafbfb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #54656f;
+  cursor: pointer;
+
+  input {
+    display: none;
+  }
+
+  .plus-icon {
+    font-size: 27px;
+    color: #008f75;
+  }
+}
+
+// Empty state
+
+.empty-state {
+  width: 100%;
+}
+
+.upload-button {
+  min-height: 140px;
+  border: 1px dashed #aebac1;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+
+  input {
+    display: none;
+  }
+
+  span {
+    color: #008f75;
+    font-size: 28px;
+  }
+
+  small {
+    color: #86969e;
+    font-size: 11px;
+  }
+}
+
+// Actions
+
+.photo-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.remove-button,
+.change-button {
+  padding: 10px 16px;
+  border-radius: 25px;
+  border: 1px solid #d9e0e3;
+  background: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.remove-button {
+  color: #c0392b;
+}
+
+.change-button {
+  color: #34434a;
+
+  input {
+    display: none;
+  }
+}
+
+.footer-text {
+  margin-top: 25px;
+  font-size: 11px;
+  color: #86969e;
+}
+
+// Mobile responsiveness
+
+@media (max-width: 480px) {
+  .profile-editor {
+    min-height: 100vh;
+    border: none;
+  }
+
+  .editor-content {
+    padding: 25px 18px;
+  }
+
+  .profile-preview {
+    width: 190px;
+    height: 190px;
+  }
+}
